@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1457652103433.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F8B280E1",
+    "lastKnownWriteTime" : 5381818112,
+    "last_content_update" : 1457652103433,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "ea2op82hmv",
+        "caption" : "averages",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=averages&cache_key=ea2op82hmv",
+        "displayedObservations" : "180",
+        "environment" : "",
+        "object" : "averages",
+        "totalObservations" : "180",
+        "variables" : "83"
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

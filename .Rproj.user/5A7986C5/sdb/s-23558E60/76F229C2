@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n  #load data\n  if (!file.info(\"UCI HAR Dataset\")$isdir) {\n    download.file(\"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip\", \"dataset.zip\")\n    unzip(\"dataset.zip\")\n  }\n  \n  #1 Merges the training and the test sets to create one data set.\n  x_test <- read.table(\"UCI HAR Dataset/test/X_test.txt\", col.names = )\n  x_train <- read.table(\"UCI HAR Dataset/train/X_train.txt\")\n  x <- rbind(x_test,x_train)\n  features <- read.table(\"UCI HAR Dataset/features.txt\")\n  colnames(x) <- features[,2]\n  \n  #2 Extracts only the measurements on the mean and standard deviation for each measurement.\n  x_mean_std <- x[,grep(\"mean|std\",features[,2])]\n  \n  #3 Uses descriptive activity names to name the activities in the data set\n  y_test <- read.table(\"UCI HAR Dataset/test/y_test.txt\")\n  y_train <- read.table(\"UCI HAR Dataset/train/y_train.txt\")\n  y <- rbind(y_test,y_train)\n  \n  labels <- read.table(\"UCI HAR Dataset/activity_labels.txt\")\n  \n  func <- function(i){labels[i,2]}\n  y <- as.data.frame(sapply(y,func))\n  \n  #4 Appropriately labels the data set with descriptive variable names.\n  colnames(y) <- \"activity\"\n  dataset <- cbind(x_mean_std,y)\n\n  #5 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.\n  subject_test<-read.table(\"UCI HAR Dataset/test/subject_test.txt\")\n  subject_train<-read.table(\"UCI HAR Dataset/train/subject_train.txt\")\n  subject <- rbind(subject_test,subject_train)\n  colnames(subject) <- \"subject\" \n  dataset <- cbind(dataset,subject)\n  tidy <- aggregate(dataset, by = list(activity = y[,1], subject = subject[,1]), mean)\n  write.table(tidy,\"result.txt\", row.names = FALSE)\n  \n  \n\n  ",
+    "created" : 1457622650995.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3040859381",
+    "id" : "76F229C2",
+    "lastKnownWriteTime" : 1457652555,
+    "last_content_update" : 1457652555694,
+    "path" : "~/RProjects/Coursera/run_analysis.R",
+    "project_path" : "run_analysis.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}
